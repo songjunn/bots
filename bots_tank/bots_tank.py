@@ -21,8 +21,9 @@ class TankBots(Bots):
 
     def connect_cb(self):
         super(TankBots, self).connect_cb()
-        #self.schedule(1, self.test_sendData)
         self.requestLogin()
+        #self.schedule(10, self.test_sendData)
+        #self.test_sendData()
 
     def shutdown_cb(self):
         super(TankBots, self).shutdown_cb()
@@ -50,7 +51,8 @@ class TankBots(Bots):
         message = protocol.Protocol()
         buffer = message.package(0, data)
         self.sendData(buffer)
-        logging.debug("Send string size %d: {%s}", len(buffer), data)
+        #logging.debug("Send string size %d: {%s}", len(buffer), data)
+        logging.debug("Send string size %d", len(buffer))
 
     def sendMsg(self, type, proto):
         message = protocol.Protocol()
@@ -60,7 +62,7 @@ class TankBots(Bots):
                       text_format.MessageToString(proto, True, True))
 
     def test_sendData(self):
-        data = "hello python! I'm bots %d" % self._id
+        data = "afhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiuafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhiviafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhiviafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhiviafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhiviafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhiviafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhiviafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhiviafhajfdasfkhsdjfhksjafhkshfshdfksadhfjshdiueeeeeeieuhfskdhaifdshfjhsdjfhjsdfhjshfksdhfkdsjhfkshdfkshfkdshfkdshfksjfsjfhsdfjsdkfhiewekjshfiuwhejdshfjhsdkjjjjjjjdhfskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhivifskjdfhueiwrhjsdfuichvbehwiurhsdabcvhadfhuicgvwghefbasdjhivirhsdabcvhadfhuicgvwghefbasdjhivi"
         self.sendString(data)
 
     def requestLogin(self):
@@ -68,5 +70,5 @@ class TankBots(Bots):
         #msg.guest = "bots_001"
         #msg.world = 1
         #self.sendMsg(MessageTypeDefine_pb2.DCE_GUEST_LOGIN, msg)
-        data = "gl" + ",1" + ",guest001"
+        data = "gl" + ",1" + ",guest" + str(self._id)
         self.sendString(data)

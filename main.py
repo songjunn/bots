@@ -4,6 +4,7 @@ import gevent.monkey
 from bots_jks import bots_jks
 from bots_tank import bots_tank
 from bots_leaf import bots_leaf
+from bots_keystone import bots_keystone
 gevent.monkey.patch_all()
 
 
@@ -34,8 +35,12 @@ def start():
         bots = bots_leaf.LeafBots(i)
         bots.connect(addr, port)
 
+    def createKeystoneBots(i, addr, port):
+        bots = bots_keystone.KeystoneBots(i)
+        bots.connect(addr, port)
+
     threads = [
-        gevent.spawn(createLeafBots, i, "127.0.0.1", "3563") for i in xrange(1)]
+        gevent.spawn(createKeystoneBots, i, "192.168.5.7", "20000") for i in xrange(1)]
     gevent.joinall(threads)
 
     while True:
