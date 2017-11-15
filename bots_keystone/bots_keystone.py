@@ -67,7 +67,7 @@ class KeystoneBots(Bots):
 
     def requestLogin(self):
         msg = MessageUser_pb2.DceGuestLogin()
-        msg.guest = "bots_001"
+        msg.guest = u"机器人001"
         msg.world = 1
         self.sendMsg(MessageTypeDefine_pb2.DCE_GUEST_LOGIN, msg)
         #data = "gl" + ",1" + ",guest" + str(self._id)

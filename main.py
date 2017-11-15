@@ -2,7 +2,7 @@
 import logging
 import gevent.monkey
 from bots_jks import bots_jks
-from bots_tank import bots_tank
+from bots_ship import bots_ship
 from bots_leaf import bots_leaf
 from bots_keystone import bots_keystone
 gevent.monkey.patch_all()
@@ -27,9 +27,10 @@ def start():
         bots = bots_jks.JksBots(i)
         bots.connect(addr, port)
 
-    def createTankBots(i, addr, port):
-        bots = bots_tank.TankBots(i)
-        bots.connect(addr, port)
+    def createShipBots(i, addr, port):
+        bots = bots_ship.ShipBots(i)
+        bots.connectServer(addr, port)
+        #bots.schedule(1, bots.test_login)
 
     def createLeafBots(i, addr, port):
         bots = bots_leaf.LeafBots(i)
@@ -40,7 +41,7 @@ def start():
         bots.connect(addr, port)
 
     threads = [
-        gevent.spawn(createKeystoneBots, i, "192.168.5.7", "20000") for i in xrange(1)]
+        gevent.spawn(createShipBots, i, "192.168.2.162", "25001") for i in xrange(1024)]
     gevent.joinall(threads)
 
     while True:

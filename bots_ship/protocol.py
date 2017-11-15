@@ -1,4 +1,5 @@
 # coding: utf-8
+import socket
 import struct
 import binascii
 
@@ -11,8 +12,8 @@ class Protocol(object):
         self._data = ""
 
     def package(self, type, data):
-        self._size = len(data) + 2
-        self._type = type
+        self._size = socket.htons(len(data) + 2)
+        self._type = socket.htons(type)
         self._data = data
 
         s = struct.Struct('hh' + str(len(data)) + 's')

@@ -1,0 +1,6 @@
+//package core.io.protocol;
+
+message DseHeartbeat 
+{
+	optional int32  		time    = 1;
+}

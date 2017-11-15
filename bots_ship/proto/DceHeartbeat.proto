@@ -1,0 +1,5 @@
+//package core.io.protocol;
+
+message DceHeartbeat 
+{
+}

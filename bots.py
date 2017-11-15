@@ -9,11 +9,18 @@ __client_status__ = ['None', 'Connected', 'Online', 'Offline']
 class Bots(object):
     def __init__(self, id):
         self._id = id
+        self._host = ""
+        self._port = 0
         self._status = __client_status__[0]
         self._netHandler = None
 
-    def connect(self, host, port):
-        self._netHandler.connect(host, port)
+    def connect(self):
+        self._netHandler.connect(self._host, self._port)
+
+    def connectServer(self, host, port):
+        self._host = host
+        self._port = port
+        self.connect()
 
     def shutdown(self):
         self._netHandler.shutdown()
