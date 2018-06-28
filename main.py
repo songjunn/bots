@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 import logging
 import gevent.monkey
-from bots_jks import bots_jks
-from bots_ship import bots_ship
-from bots_leaf import bots_leaf
-from bots_keystone import bots_keystone
+from bots_tyjh import bots_tyjh
+#from bots_ship import bots_ship
 gevent.monkey.patch_all()
 
 
@@ -23,25 +21,17 @@ def init_logging():
 def start():
     init_logging()
 
-    def createJksBots(i, addr, port):
-        bots = bots_jks.JksBots(i)
-        bots.connect(addr, port)
-
-    def createShipBots(i, addr, port):
-        bots = bots_ship.ShipBots(i)
+    def createTyjhBots(i, addr, port):
+        bots = bots_tyjh.TyjhBots(i)
         bots.connectServer(addr, port)
-        #bots.schedule(1, bots.test_login)
 
-    def createLeafBots(i, addr, port):
-        bots = bots_leaf.LeafBots(i)
-        bots.connect(addr, port)
-
-    def createKeystoneBots(i, addr, port):
-        bots = bots_keystone.KeystoneBots(i)
-        bots.connect(addr, port)
+    #def createShipBots(i, addr, port):
+    #    bots = bots_ship.ShipBots(i)
+    #    bots.connectServer(addr, port)
+    #    bots.schedule(1, bots.test_login)
 
     threads = [
-        gevent.spawn(createShipBots, i, "192.168.2.162", "25001") for i in xrange(1024)]
+        gevent.spawn(createTyjhBots, i, "123.207.143.200", "15001") for i in xrange(1)]
     gevent.joinall(threads)
 
     while True:
@@ -50,6 +40,6 @@ def start():
 if __name__ == "__main__":
     try:
         start()
-    except Exception, ex:
+    except Exception as ex:
         logging.debug("Ocurred Exception: %s" % str(ex))
         quit()

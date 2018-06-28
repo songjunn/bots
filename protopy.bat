@@ -1,6 +1,6 @@
 @echo off
 
-@set SRC_DIR=./bots_ship/proto
+@set SRC_DIR=./bots_tyjh/proto
 
 cd %SRC_DIR%
 

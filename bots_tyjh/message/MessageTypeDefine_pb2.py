@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='MessageTypeDefine.proto',
   package='Message',
-  serialized_pb=_b('\n\x17MessageTypeDefine.proto\x12\x07Message*\x8c\x03\n\tMsgDefine\x12\r\n\tDSE_BEGIN\x10\x00\x12\x12\n\x0e\x44SE_NET_ACCEPT\x10\x01\x12\x13\n\x0f\x44SE_NET_CONNECT\x10\x02\x12\x11\n\rDSE_NET_CLOSE\x10\x03\x12\x13\n\x0f\x44SE_SERVER_INFO\x10\n\x12\x12\n\x0e\x44SE_SERVER_CMD\x10\x0b\x12\x14\n\x10\x44SE_COMMON_ERROR\x10\x14\x12\x17\n\x13\x44SE_COMMON_EVENTLOG\x10\x15\x12\x12\n\x0e\x44SE_USER_HEART\x10\x64\x12\x14\n\x0f\x44SE_MESSAGE_END\x10\x87\'\x12\x16\n\x11\x44\x43\x45_MESSAGE_BEGIN\x10\x88\'\x12\x14\n\x0f\x44\x43\x45_GUEST_LOGIN\x10\x89\'\x12\x13\n\x0e\x44\x43\x45_USER_LOGIN\x10\x8a\'\x12\x14\n\x0f\x44\x43\x45_USER_LOGOUT\x10\x8b\'\x12\x13\n\x0e\x44\x43\x45_USER_HEART\x10\x8c\'\x12\x16\n\x11\x44\x43\x45_DEBUG_COMMAND\x10\x90N\x12\x16\n\x11\x44\x43\x45_DEBUG_NETTEST\x10\x91N\x12\x14\n\x0f\x44\x43\x45_MESSAGE_END\x10\x80P')
+  serialized_pb=_b('\n\x17MessageTypeDefine.proto\x12\x07Message*\xa0\x03\n\tMsgDefine\x12\x11\n\rS2C_MSG_BEGIN\x10\x00\x12\x12\n\x0eS2C_USER_LOGIN\x10\x64\x12\x13\n\x0fS2C_USER_LOGOUT\x10\x65\x12\x16\n\x12S2C_USER_HEARTBEAT\x10\x66\x12\x14\n\x10S2C_PLAYER_LOGIN\x10g\x12\x10\n\x0bS2C_MSG_END\x10\x8fN\x12\x12\n\rC2S_MSG_BEGIN\x10\x90N\x12\x14\n\x0f\x43\x32S_GUEST_LOGIN\x10\x91N\x12\x13\n\x0e\x43\x32S_USER_LOGIN\x10\x92N\x12\x14\n\x0f\x43\x32S_USER_LOGOUT\x10\x93N\x12\x17\n\x12\x43\x32S_USER_HEARTBEAT\x10\x94N\x12\x16\n\x11\x43\x32S_PLAYER_CREATE\x10\x95N\x12\x15\n\x10\x43\x32S_PLAYER_LOGIN\x10\x96N\x12\x11\n\x0c\x43\x32S_PROP_USE\x10\xf4N\x12\x14\n\x0f\x43\x32S_PROP_DELETE\x10\xf5N\x12\x12\n\rC2S_PROP_SELL\x10\xf6N\x12\x13\n\x0e\x43\x32S_PROP_EQUIP\x10\xf7N\x12\x15\n\x10\x43\x32S_PROP_UNEQUIP\x10\xf8N\x12\x11\n\x0b\x43\x32S_MSG_END\x10\xb0\xea\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -30,104 +30,109 @@ _MSGDEFINE = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='DSE_BEGIN', index=0, number=0,
+      name='S2C_MSG_BEGIN', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_NET_ACCEPT', index=1, number=1,
+      name='S2C_USER_LOGIN', index=1, number=100,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_NET_CONNECT', index=2, number=2,
+      name='S2C_USER_LOGOUT', index=2, number=101,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_NET_CLOSE', index=3, number=3,
+      name='S2C_USER_HEARTBEAT', index=3, number=102,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_SERVER_INFO', index=4, number=10,
+      name='S2C_PLAYER_LOGIN', index=4, number=103,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_SERVER_CMD', index=5, number=11,
+      name='S2C_MSG_END', index=5, number=9999,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_COMMON_ERROR', index=6, number=20,
+      name='C2S_MSG_BEGIN', index=6, number=10000,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_COMMON_EVENTLOG', index=7, number=21,
+      name='C2S_GUEST_LOGIN', index=7, number=10001,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_USER_HEART', index=8, number=100,
+      name='C2S_USER_LOGIN', index=8, number=10002,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DSE_MESSAGE_END', index=9, number=4999,
+      name='C2S_USER_LOGOUT', index=9, number=10003,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_MESSAGE_BEGIN', index=10, number=5000,
+      name='C2S_USER_HEARTBEAT', index=10, number=10004,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_GUEST_LOGIN', index=11, number=5001,
+      name='C2S_PLAYER_CREATE', index=11, number=10005,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_USER_LOGIN', index=12, number=5002,
+      name='C2S_PLAYER_LOGIN', index=12, number=10006,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_USER_LOGOUT', index=13, number=5003,
+      name='C2S_PROP_USE', index=13, number=10100,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_USER_HEART', index=14, number=5004,
+      name='C2S_PROP_DELETE', index=14, number=10101,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_DEBUG_COMMAND', index=15, number=10000,
+      name='C2S_PROP_SELL', index=15, number=10102,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_DEBUG_NETTEST', index=16, number=10001,
+      name='C2S_PROP_EQUIP', index=16, number=10103,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='DCE_MESSAGE_END', index=17, number=10240,
+      name='C2S_PROP_UNEQUIP', index=17, number=10104,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_MSG_END', index=18, number=30000,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=37,
-  serialized_end=433,
+  serialized_end=453,
 )
 _sym_db.RegisterEnumDescriptor(_MSGDEFINE)
 
 MsgDefine = enum_type_wrapper.EnumTypeWrapper(_MSGDEFINE)
-DSE_BEGIN = 0
-DSE_NET_ACCEPT = 1
-DSE_NET_CONNECT = 2
-DSE_NET_CLOSE = 3
-DSE_SERVER_INFO = 10
-DSE_SERVER_CMD = 11
-DSE_COMMON_ERROR = 20
-DSE_COMMON_EVENTLOG = 21
-DSE_USER_HEART = 100
-DSE_MESSAGE_END = 4999
-DCE_MESSAGE_BEGIN = 5000
-DCE_GUEST_LOGIN = 5001
-DCE_USER_LOGIN = 5002
-DCE_USER_LOGOUT = 5003
-DCE_USER_HEART = 5004
-DCE_DEBUG_COMMAND = 10000
-DCE_DEBUG_NETTEST = 10001
-DCE_MESSAGE_END = 10240
+S2C_MSG_BEGIN = 0
+S2C_USER_LOGIN = 100
+S2C_USER_LOGOUT = 101
+S2C_USER_HEARTBEAT = 102
+S2C_PLAYER_LOGIN = 103
+S2C_MSG_END = 9999
+C2S_MSG_BEGIN = 10000
+C2S_GUEST_LOGIN = 10001
+C2S_USER_LOGIN = 10002
+C2S_USER_LOGOUT = 10003
+C2S_USER_HEARTBEAT = 10004
+C2S_PLAYER_CREATE = 10005
+C2S_PLAYER_LOGIN = 10006
+C2S_PROP_USE = 10100
+C2S_PROP_DELETE = 10101
+C2S_PROP_SELL = 10102
+C2S_PROP_EQUIP = 10103
+C2S_PROP_UNEQUIP = 10104
+C2S_MSG_END = 30000
 
 
 DESCRIPTOR.enum_types_by_name['MsgDefine'] = _MSGDEFINE
