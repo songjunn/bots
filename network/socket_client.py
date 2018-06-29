@@ -5,32 +5,40 @@ from gevent.queue import Queue
 from gevent.socket import socket
 gevent.monkey.patch_all()
 
+__client_status__ = ['None', 'Connected', 'Online', 'Offline']
 
 class SocketClient(object):
-    def __init__(self, connect_cb = None, shutdown_cb = None, receive_cb = None):
+    def __init__(self):
+        self._work = False
         self._sockfd = None
         self._recvbuff = ""
         self._sendqueue = Queue()
-        self._work = False
-        self._cbConnect = connect_cb
-        self._cbShutdown = shutdown_cb
-        self._cbReceive = receive_cb
+        self._status = __client_status__[0]
 
     def connect(self, host, port):
         self._work = True
         self._sockfd = gevent.socket.socket()
         self._sockfd.connect((host, port))
-        self._cbConnect()
+        self.connect_cb()
         gevent.spawn(self._writer)
         gevent.spawn(self._reader)
 
     def shutdown(self):
         self._work = False
         self._sockfd.close()
-        self._cbShutdown()
+        self.shutdown_cb()
 
     def sendData(self, data):
         self._sendqueue.put(data)
+
+    def connect_cb(self):
+        self._status = __client_status__[1]
+
+    def shutdown_cb(self):
+        self._status = __client_status__[3]
+
+    def receive_cb(self, data):
+        pass
 
     def _reader(self):
         while self._work:
@@ -39,7 +47,7 @@ class SocketClient(object):
                 self.shutdown()
             else:
                 logging.debug("Recv size %d", len(data))
-                self._cbReceive(data)
+                self.receive_cb(data)
             # gevent.sleep(1)
 
     def _writer(self):

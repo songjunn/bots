@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
+import sys
+path = __file__[:__file__.rfind("\\")]
+sys.path.append(path)
+
 import logging
 import gevent.monkey
 import protocol
 from bots import Bots
-from network import socket_client
 from google.protobuf import text_format
+from handler import register
 from message import MessageUser_pb2
 from message import MessageTypeDefine_pb2
 gevent.monkey.patch_all()
@@ -15,11 +19,9 @@ __client_status__ = ['None', 'Connected', 'Online', 'Offline']
 class TyjhBots(Bots):
     def __init__(self, id):
         super(TyjhBots, self).__init__(id)
-        self._netHandler = socket_client.SocketClient(self.connect_cb, self.shutdown_cb, self.receive_cb)
 
     def connect_cb(self):
         super(TyjhBots, self).connect_cb()
-        #self.schedule(1, self.test_sendData)
         self.requestLogin()
 
     def shutdown_cb(self):
@@ -35,17 +37,11 @@ class TyjhBots(Bots):
         self.handleMessage(proto)
 
     def handleMessage(self, pack):
-        messages = {
-            MessageTypeDefine_pb2.MSG_USER_LOGIN_PLAYER: MessageUser_pb2.PlayerLogin(),
-        }
-        proto = messages.get(pack.type())
+        proto = register.protocols.get(pack.type())
         proto.ParseFromString(pack.data())
         logging.debug("Recv message %d size %d: %s", pack.type(),
                       pack.size(), text_format.MessageToString(proto, True, True))
-
-    def sendString(self, data):
-        self.sendData(data)
-        logging.debug("Send string size %d: %s", len(data), data)
+        register.handlers.get(pack.type())(proto)
 
     def sendMsg(self, type, proto):
         message = protocol.Protocol()
@@ -53,10 +49,6 @@ class TyjhBots(Bots):
         self.sendData(buffer)
         logging.debug("Send message %d size %d: %s", type, len(buffer),
                       text_format.MessageToString(proto, True, True))
-
-    def test_sendData(self):
-        data = "hello python! I'm bots %d" % self._id
-        self.sendString(data)
 
     def requestLogin(self):
         msg = MessageUser_pb2.C2SGuestLogin()

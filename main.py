@@ -23,7 +23,7 @@ def start():
 
     def createTyjhBots(i, addr, port):
         bots = bots_tyjh.TyjhBots(i)
-        bots.connectServer(addr, port)
+        bots.connect(addr, port)
 
     #def createShipBots(i, addr, port):
     #    bots = bots_ship.ShipBots(i)
