@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import logging
 import gevent.monkey
+from botsMgr import BotsMgr
 from bots_tyjh import bots_tyjh
-#from bots_ship import bots_ship
 gevent.monkey.patch_all()
 
 
@@ -24,14 +24,10 @@ def start():
     def createTyjhBots(i, addr, port):
         bots = bots_tyjh.TyjhBots(i)
         bots.connect(addr, port)
-
-    #def createShipBots(i, addr, port):
-    #    bots = bots_ship.ShipBots(i)
-    #    bots.connectServer(addr, port)
-    #    bots.schedule(1, bots.test_login)
+        BotsMgr().addBotsByIdx(i, bots)
 
     threads = [
-        gevent.spawn(createTyjhBots, i, "123.207.143.200", "15001") for i in xrange(1)]
+        gevent.spawn(createTyjhBots, i, "192.168.0.210", "15001") for i in xrange(1)]
     gevent.joinall(threads)
 
     while True:

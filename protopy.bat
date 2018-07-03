@@ -1,6 +1,6 @@
 @echo off
 
-@set SRC_DIR=./bots_tyjh/proto
+@set SRC_DIR=../../service-src/libmessage/proto
 
 cd %SRC_DIR%
 

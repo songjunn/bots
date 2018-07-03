@@ -7,17 +7,17 @@ gevent.monkey.patch_all()
 
 
 class Bots(NetClient):
-    def __init__(self, id):
+    def __init__(self, index):
         super(Bots, self).__init__()
-        self._id = id
+        self._index = index
 
     def connect_cb(self):
         super(Bots, self).connect_cb()
-        logging.info("Bots %d connect success...", self._id)
+        logging.info("Bots %d connect success...", self._index)
 
     def shutdown_cb(self):
         super(Bots, self).connect_cb()
-        logging.info("Bots %d shutdown...", self._id)
+        logging.info("Bots %d shutdown...", self._index)
 
     def receive_cb(self, data):
         super(Bots, self).receive_cb()
