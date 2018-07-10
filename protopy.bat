@@ -1,9 +1,10 @@
 @echo off
 
-@set SRC_DIR=../../service-src/libmessage/proto
+@set OUT_PATH=%cd%
+@set PROTO_PATH=../../service-src/libmessage/proto
 
-cd %SRC_DIR%
+cd %PROTO_PATH%
 
-for /f "delims=" %%i in ('dir /b /a-h "*.proto"') do (call protoc.exe -I=./ --python_out=../message %%i)
+for /f "delims=" %%i in ('dir /b /a-h "*.proto"') do (call protoc.exe -I=./ --python_out=%OUT_PATH%/bots_tyjh/message %%i)
 
 @pause

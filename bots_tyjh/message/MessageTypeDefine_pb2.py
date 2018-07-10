@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='MessageTypeDefine.proto',
   package='Message',
-  serialized_pb=_b('\n\x17MessageTypeDefine.proto\x12\x07Message*\xa0\x03\n\tMsgDefine\x12\x11\n\rS2C_MSG_BEGIN\x10\x00\x12\x12\n\x0eS2C_USER_LOGIN\x10\x64\x12\x13\n\x0fS2C_USER_LOGOUT\x10\x65\x12\x16\n\x12S2C_USER_HEARTBEAT\x10\x66\x12\x14\n\x10S2C_PLAYER_LOGIN\x10g\x12\x10\n\x0bS2C_MSG_END\x10\x8fN\x12\x12\n\rC2S_MSG_BEGIN\x10\x90N\x12\x14\n\x0f\x43\x32S_GUEST_LOGIN\x10\x91N\x12\x13\n\x0e\x43\x32S_USER_LOGIN\x10\x92N\x12\x14\n\x0f\x43\x32S_USER_LOGOUT\x10\x93N\x12\x17\n\x12\x43\x32S_USER_HEARTBEAT\x10\x94N\x12\x16\n\x11\x43\x32S_PLAYER_CREATE\x10\x95N\x12\x15\n\x10\x43\x32S_PLAYER_LOGIN\x10\x96N\x12\x11\n\x0c\x43\x32S_PROP_USE\x10\xf4N\x12\x14\n\x0f\x43\x32S_PROP_DELETE\x10\xf5N\x12\x12\n\rC2S_PROP_SELL\x10\xf6N\x12\x13\n\x0e\x43\x32S_PROP_EQUIP\x10\xf7N\x12\x15\n\x10\x43\x32S_PROP_UNEQUIP\x10\xf8N\x12\x11\n\x0b\x43\x32S_MSG_END\x10\xb0\xea\x01')
+  serialized_pb=_b('\n\x17MessageTypeDefine.proto\x12\x07Message*\xc1\x05\n\tMsgDefine\x12\x11\n\rS2C_MSG_BEGIN\x10\x00\x12\x14\n\x10S2C_COMMON_ERROR\x10\x32\x12\x12\n\x0eS2C_USER_LOGIN\x10\x64\x12\x13\n\x0fS2C_USER_LOGOUT\x10\x65\x12\x16\n\x12S2C_USER_HEARTBEAT\x10\x66\x12\x14\n\x10S2C_PLAYER_LOGIN\x10g\x12\x12\n\rS2C_PROP_LIST\x10\xc8\x01\x12\r\n\x08S2C_CHAT\x10\xac\x02\x12\x14\n\x0fS2C_FRIEND_LIST\x10\xad\x02\x12\x12\n\rS2C_MAIL_LIST\x10\x91\x03\x12\x10\n\x0bS2C_MSG_END\x10\x8fN\x12\x12\n\rC2S_MSG_BEGIN\x10\x90N\x12\x14\n\x0f\x43\x32S_GUEST_LOGIN\x10\x91N\x12\x13\n\x0e\x43\x32S_USER_LOGIN\x10\x92N\x12\x14\n\x0f\x43\x32S_USER_LOGOUT\x10\x93N\x12\x17\n\x12\x43\x32S_USER_HEARTBEAT\x10\x94N\x12\x16\n\x11\x43\x32S_PLAYER_CREATE\x10\x95N\x12\x15\n\x10\x43\x32S_PLAYER_LOGIN\x10\x96N\x12\x11\n\x0c\x43\x32S_PROP_USE\x10\xf4N\x12\x11\n\x0c\x43\x32S_PROP_BUY\x10\xf5N\x12\x12\n\rC2S_PROP_SELL\x10\xf6N\x12\x15\n\x10\x43\x32S_PROP_COMPOSE\x10\xf7N\x12\x17\n\x12\x43\x32S_PROP_DECOMPOSE\x10\xf8N\x12\x13\n\x0e\x43\x32S_PROP_EQUIP\x10\xf9N\x12\x15\n\x10\x43\x32S_PROP_UNEQUIP\x10\xfaN\x12\x12\n\rC2S_MAIL_SEND\x10\xd8O\x12\x12\n\rC2S_MAIL_READ\x10\xd9O\x12\x14\n\x0f\x43\x32S_MAIL_DELETE\x10\xdaO\x12\x15\n\x10\x43\x32S_MAIL_EXTRACT\x10\xdbO\x12\r\n\x08\x43\x32S_CHAT\x10\xbcP\x12\x13\n\x0e\x43\x32S_FRIEND_ADD\x10\xbdP\x12\x16\n\x11\x43\x32S_FRIEND_DELETE\x10\xbeP\x12\x11\n\x0b\x43\x32S_MSG_END\x10\xb0\xea\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -34,91 +34,152 @@ _MSGDEFINE = _descriptor.EnumDescriptor(
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='S2C_USER_LOGIN', index=1, number=100,
+      name='S2C_COMMON_ERROR', index=1, number=50,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='S2C_USER_LOGOUT', index=2, number=101,
+      name='S2C_USER_LOGIN', index=2, number=100,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='S2C_USER_HEARTBEAT', index=3, number=102,
+      name='S2C_USER_LOGOUT', index=3, number=101,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='S2C_PLAYER_LOGIN', index=4, number=103,
+      name='S2C_USER_HEARTBEAT', index=4, number=102,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='S2C_MSG_END', index=5, number=9999,
+      name='S2C_PLAYER_LOGIN', index=5, number=103,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_MSG_BEGIN', index=6, number=10000,
+      name='S2C_PROP_LIST', index=6, number=200,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_GUEST_LOGIN', index=7, number=10001,
+      name='S2C_CHAT', index=7, number=300,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_USER_LOGIN', index=8, number=10002,
+      name='S2C_FRIEND_LIST', index=8, number=301,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_USER_LOGOUT', index=9, number=10003,
+      name='S2C_MAIL_LIST', index=9, number=401,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_USER_HEARTBEAT', index=10, number=10004,
+      name='S2C_MSG_END', index=10, number=9999,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_PLAYER_CREATE', index=11, number=10005,
+      name='C2S_MSG_BEGIN', index=11, number=10000,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_PLAYER_LOGIN', index=12, number=10006,
+      name='C2S_GUEST_LOGIN', index=12, number=10001,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_PROP_USE', index=13, number=10100,
+      name='C2S_USER_LOGIN', index=13, number=10002,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_PROP_DELETE', index=14, number=10101,
+      name='C2S_USER_LOGOUT', index=14, number=10003,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_PROP_SELL', index=15, number=10102,
+      name='C2S_USER_HEARTBEAT', index=15, number=10004,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_PROP_EQUIP', index=16, number=10103,
+      name='C2S_PLAYER_CREATE', index=16, number=10005,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_PROP_UNEQUIP', index=17, number=10104,
+      name='C2S_PLAYER_LOGIN', index=17, number=10006,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='C2S_MSG_END', index=18, number=30000,
+      name='C2S_PROP_USE', index=18, number=10100,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_PROP_BUY', index=19, number=10101,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_PROP_SELL', index=20, number=10102,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_PROP_COMPOSE', index=21, number=10103,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_PROP_DECOMPOSE', index=22, number=10104,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_PROP_EQUIP', index=23, number=10105,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_PROP_UNEQUIP', index=24, number=10106,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_MAIL_SEND', index=25, number=10200,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_MAIL_READ', index=26, number=10201,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_MAIL_DELETE', index=27, number=10202,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_MAIL_EXTRACT', index=28, number=10203,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_CHAT', index=29, number=10300,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_FRIEND_ADD', index=30, number=10301,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_FRIEND_DELETE', index=31, number=10302,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='C2S_MSG_END', index=32, number=30000,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=37,
-  serialized_end=453,
+  serialized_end=742,
 )
 _sym_db.RegisterEnumDescriptor(_MSGDEFINE)
 
 MsgDefine = enum_type_wrapper.EnumTypeWrapper(_MSGDEFINE)
 S2C_MSG_BEGIN = 0
+S2C_COMMON_ERROR = 50
 S2C_USER_LOGIN = 100
 S2C_USER_LOGOUT = 101
 S2C_USER_HEARTBEAT = 102
 S2C_PLAYER_LOGIN = 103
+S2C_PROP_LIST = 200
+S2C_CHAT = 300
+S2C_FRIEND_LIST = 301
+S2C_MAIL_LIST = 401
 S2C_MSG_END = 9999
 C2S_MSG_BEGIN = 10000
 C2S_GUEST_LOGIN = 10001
@@ -128,10 +189,19 @@ C2S_USER_HEARTBEAT = 10004
 C2S_PLAYER_CREATE = 10005
 C2S_PLAYER_LOGIN = 10006
 C2S_PROP_USE = 10100
-C2S_PROP_DELETE = 10101
+C2S_PROP_BUY = 10101
 C2S_PROP_SELL = 10102
-C2S_PROP_EQUIP = 10103
-C2S_PROP_UNEQUIP = 10104
+C2S_PROP_COMPOSE = 10103
+C2S_PROP_DECOMPOSE = 10104
+C2S_PROP_EQUIP = 10105
+C2S_PROP_UNEQUIP = 10106
+C2S_MAIL_SEND = 10200
+C2S_MAIL_READ = 10201
+C2S_MAIL_DELETE = 10202
+C2S_MAIL_EXTRACT = 10203
+C2S_CHAT = 10300
+C2S_FRIEND_ADD = 10301
+C2S_FRIEND_DELETE = 10302
 C2S_MSG_END = 30000
 
 

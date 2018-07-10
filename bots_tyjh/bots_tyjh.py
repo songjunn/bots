@@ -21,6 +21,8 @@ class TyjhBots(Bots):
         super(TyjhBots, self).__init__(id)
         self.uid_ = 0
         self.players = {}
+        self.proplist = []
+        self.maillist = []
 
     def connect_cb(self):
         super(TyjhBots, self).connect_cb()
